@@ -1,0 +1,28 @@
+# 应用配置。YAML 比 properties 更易读，Spring Boot 两种都支持。
+server:
+  port: 8080
+
+spring:
+  application:
+    name: springdemo
+  jackson:
+    # 统一时区，避免返回的时间差 8 小时（国内项目的常见坑）
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+
+# 日志级别：把你自己包的日志调到 DEBUG，排查问题时很有用
+logging:
+  level:
+    root: INFO
+    com.example.demo: DEBUG
+
+---
+# 用 --- 分隔多个 profile；启动时加 --spring.profiles.active=dev 切换
+spring:
+  config:
+    activate:
+      on-profile: dev
+logging:
+  level:
+    com.example.demo: DEBUG

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+      Spring Boot 3.5.x 是当前 3.x 线的最新稳定版（最后小版本 3.5.16）。
+      选它的理由：
+        1. 国内绝大多数 Java 岗位的招聘要求仍以 3.x 为主
+        2. 教程、源码、面试题资料最全，遇到问题能搜到答案
+        3. Spring Boot 4.x 已经 GA，但生态和公司实践还在迁移中，等这周恢复完再看
+      如果想试 4.x：把版本号换成 4.1.2 即可，代码几乎不用改（注意 4.x 有部分 starter 拆包）
+    -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.16</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.example</groupId>
+    <artifactId>springdemo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springdemo</name>
+    <description>Day 1 skeleton for the 7-day Java comeback plan</description>
+
+    <properties>
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- Web MVC + 内嵌 Tomcat + Jackson -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- 参数校验（Jakarta Bean Validation） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- 测试：JUnit 5 + Mockito + AssertJ + MockMvc -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--
+          Day 5 会用到，现在先注释掉，避免首次构建多下载一堆依赖
+          （取消注释后记得执行 mvn -U clean compile 让 Maven 重新解析）
+        -->
+        <!--
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.8.9</version>
+        </dependency>
+        -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 提供 mvn spring-boot:run 和打可执行 jar 的能力 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
