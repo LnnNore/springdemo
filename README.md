@@ -7,12 +7,12 @@
 
 ## 技术栈
 
-| 组件 | 版本 |
-|---|---|
-| JDK | 21 (LTS, Temurin) |
-| Spring Boot | 3.5.16 |
-| 构建工具 | Maven 3.9.x |
-| 测试 | JUnit 5 + MockMvc + AssertJ |
+|组件|版本|
+|-|-|
+|JDK|21 (LTS, Temurin)|
+|Spring Boot|3.5.16|
+|构建工具|Maven 3.9.x|
+|测试|JUnit 5 + MockMvc + AssertJ|
 
 ## 快速开始
 
@@ -43,11 +43,11 @@ Tomcat started on port 8080 (http) with context path ''
 
 ### 接口
 
-| 方法 | 路径 | 说明 | 示例 |
-|---|---|---|---|
-| GET | `/api/hello` | 默认问候，返回 JSON | `curl "http://localhost:8080/api/hello"` |
-| GET | `/api/hello?name=张三` | 带参数问候 | `curl "http://localhost:8080/api/hello?name=张三"` |
-| GET | `/api/info` | 返回运行时 JDK / JVM 信息 | `curl "http://localhost:8080/api/info"` |
+|方法|路径|说明|示例|
+|-|-|-|-|
+|GET|`/api/hello`|默认问候，返回 JSON|`curl "http://localhost:8080/api/hello"`|
+|GET|`/api/hello?name=张三`|带参数问候|`curl "http://localhost:8080/api/hello?name=张三"`|
+|GET|`/api/info`|返回运行时 JDK / JVM 信息|`curl "http://localhost:8080/api/info"`|
 
 `/api/hello` 的响应示例：
 
@@ -89,12 +89,14 @@ springdemo/
 
 > 这一节是给面试官看的，也是给自己复盘的。遇到问题就往下加一条。
 
-- `%JAVA_HOME%\bin` 必须放在 PATH 里，且 `JAVA_HOME` 要指向 JDK 根目录而不是 `bin`。
-- 首次 `mvn` 构建要下载依赖，国内建议配阿里云镜像（见 `restart-week/config/maven-settings-aliyun.xml`）。
-- Git 提交前确认 `.gitignore` 生效：`git status` 里不应该出现 `target/` 和 `.idea/`。
+* `%JAVA\_HOME%\\bin` 必须放在 PATH 里，且 `JAVA\_HOME` 要指向 JDK 根目录而不是 `bin`。
+* 首次 `mvn` 构建要下载依赖，国内建议配阿里云镜像（见 `restart-week/config/maven-settings-aliyun.xml`）。
+* Git 提交前确认 `.gitignore` 生效：`git status` 里不应该出现 `target/` 和 `.idea/`。
+* \- 首次 push 报 `ERROR: Repository not found`：remote 地址里把 owner 写成了 GitHub 昵称（GGBond），实际 username 是 LnnNore。GitHub 对"无权访问"和"不存在"返回同一条错误，容易误判成权限问题；用 `ssh -T git@github.com` 可以让它自报真实用户名。
 
 ## 后续计划
 
-- [ ] S8–S12：加 `@Service` 分层、DTO + `@Valid` 参数校验、统一返回体 `Result<T>`、全局异常处理，做成内存版 task-api
-- [ ] S13–S17：接入数据库（MyBatis-Plus），加分页 / 事务 / 索引优化；接 springdoc-openapi，浏览器直接调试接口
-- [ ] S19–S22：做成完整项目，补架构说明、接口文档和测试
+* \[ ] S8–S12：加 `@Service` 分层、DTO + `@Valid` 参数校验、统一返回体 `Result<T>`、全局异常处理，做成内存版 task-api
+* \[ ] S13–S17：接入数据库（MyBatis-Plus），加分页 / 事务 / 索引优化；接 springdoc-openapi，浏览器直接调试接口
+* \[ ] S19–S22：做成完整项目，补架构说明、接口文档和测试
+
